@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<body>
+    <h1>The Basics of the Web and HTML</h1>
+    <div class="lesson">
+      <h2 id="lesson-1">Lesson 1: The Basics of the Web and HTML</h2>
+      <div class="concept" id="lesson-1-1">
+        <div class="concept-title">How the Internet works</div>
+        <div class="concept-description">
+          <p>The internet is a combination of browsers (used by computers), HTML documents, and servers storing those documents. Information on the web goes to and from servers (big stationary computers) through HTML to browsers on personal computers that people use regularly. This <a href="http://web.stanford.edu/class/msande91si/www-spr04/readings/week1/InternetWhitepaper.htm">link</a> has more information.
+          </p>
+        </div>
+      </div>
+      <div class="concept" id="lesson-1-2">
+        <div class="concept-title">
+          HTML
+        </div>
+        <div class="concept-description">
+          <p>
+            HTML is the programming language used to create websites. The information contained on servers is saved as HTML documents.  When a person types a HTTP request to a server, an HTML document is 
+            retrieved.  This document then presents a web page to the person
+            who typed in the HTTP request.  Since HTML is used to create
+            web pages, it can be used to modify websites.  But you have
+            to be careful when speaking with a computer via HTML because
+            computers aren't very smart. They won't respond correctly unless
+            you give them exactly what they're looking for. So make sure you speak
+            their language.
+          </p>
+       </div>
+      </div>
+      <div class="concept" id="lesson-1-3">
+        <div class="concept-title">
+        Tags/Elements
+        </div>
+        <div class="concept-description">
+          <p>
+            Tags and elements are used to communicate with computers in HTML.  HTML is made of elemnts that are assigned a type through tags.  Two kinds of elements are 'inline' and 'block' elements.  'Block'elements are contained in boxes.  An example of a 'block' element in HTML is a paragraph.
+          </p>
+        </div>
+      </div>
+      <div class="concept" id="lesson-1-4">
+        <div class="concept-title">
+        Mental Excersice: Chill Out
+        </div>
+        <div class="conept-description">
+          <p>
+            This course offered a number of ways to change the way we think about computer programing.  One that stood out to me was the importance of understanding foundational conepts rather than trying to memorize all the details.  Since you can always look up specific concepts like <a href="http://www.w3schools.com/tags/att_font_size.asp">how to change the font in HTML</a>, it's more important to understand how to find and apply information than to know everything by memory.  After all, nobody could memorize all the details of programming anyway.
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p><span class="code">Created by: Joel Pratt</span></p>
+    </footer>
+    {% for greeting in greetings %}
+      {% if greeting.author %}
+        <b>{{ greeting.author }}</b> wrote:
+      {% else %}
+        An anonymous person wrote:
+      {% endif %}
+      <blockquote>{{ greeting.content }}</blockquote>
+    {% endfor %}
+
+    <form action="/?guestbook_name={{ guestbook_name }}" method="post">
+      <div><textarea name="content" rows="3" cols="60"></textarea></div>
+      <div><input type="submit" value="Comment"></div>
+      {% if error %}
+        <div style="color: red">{{error}}</div>
+      {% endif %}
+    </form>
+    <a href="{{ url }}">{{ url_linktext }}</a>      
+</body>
+
+{% endblock %}
+
+</html>
