@@ -1,0 +1,57 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<body>
+	<h1>Adding Style to HTML Structure</h1>
+	<div class="lesson">
+      <h2 id="lesson-3">Lesson 3: Adding CSS Style to HTML Structure</h2>
+      <div class="concept" id="lesson-3-1">
+        <div class="concept-title">Avoiding Repetition</div>
+        <div class="concept-description">
+          <p>
+            Avoiding repetion helps programmers save time, avoid errors, and make adjustments quickly.
+          </p>
+          <p>
+            Avoiding repition helps programmers save time by not having to write every style detail for each occurrence.  Instead it allows programmers to write code for one group of elements that will have the same format throughout the web page.
+          </p>
+          <p>
+            Avoiding repition helps programmers avoid errors by allowing them to use less code than they would if they had to write every style attribute for each element.  The more often programmers have to write minor details, the more chances there are for errors and the harder it is to find and correct those errors.
+          </p>
+          <p>
+            Avoiding repetiton also allows programmers to make adjustment to their code easily by not having to go through every line to make changes.  
+          </p>
+        </div>
+    </div>
+    <div class="concept" id="lesson-3-2">
+        <div class="concept-title">CSS</div>
+        <div class="concept-description">
+          <p>
+            CSS stands for Cascading Style Sheets.  The <span class="code">cascading</span> part is the most important to remember because it's what allows programmers to avoid repetition.  Essentially, CSS gives programmers a way to apply style to groups of elements of HTML documents by grouping similar elements into classes that are then given the same styles.  This grouping method is a huge time saver and simplifier because it helps programmers avoid repetition.
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p><span class="code">Created by: Joel Pratt</span></p>
+    </footer>        
+    {% for greeting in greetings %}
+      {% if greeting.author %}
+        <b>{{ greeting.author }}</b> wrote:
+      {% else %}
+        An anonymous person wrote:
+      {% endif %}
+      <blockquote>{{ greeting.content }}</blockquote>
+    {% endfor %}
+
+    <form action="/styling?guestbook_name={{ guestbook_name }}" method="post">
+      <div><textarea name="content" rows="3" cols="60"></textarea></div>
+      <div><input type="submit" value="Comment"></div>
+      {% if error %}
+        <div style="color: red">{{error}}</div>
+      {% endif %}
+    </form>
+    <a href="{{ url }}">{{ url_linktext }}</a>      
+</body>
+{% endblock %}     
