@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<body>
+    <h1>Using Templates</h1>
+    <div class="lesson">
+      <h2 id="lesson-1">Servers</h2>
+      <div class="concept" id="lesson-1-1">
+        <div class="concept-title">Separating Code</div>
+        <div class="concept-description">
+          <p>
+            HTML templates are helpful because they allow programmers to separate HTML from other types of code, make code more readable, are easier to modify, and make code more secure through the use of escaping.  Including HTML in python for example, makes code difficult to read and modify.  Since HTML has to be written as a string or multiple strings in python, the code won’t be written with any indentation or highlighting which can make code very difficult to read and modify if the HTML is substantial.  Also, auto escaping HTML with template engines like Jinja, makes it much easier to make sure that HTML escaping is functioning because the programmer doesn’t have to manually make sure that every area that should be escaped is escaped.  
+          </p>
+        </div>
+      </div>
+      <div class="concept" id="lesson-1-2">
+        <div class="concept-title">Avoiding Repetition</div>
+        <div class="concept-description">
+          <p>
+            Avoiding repetition is important for programmers because it minimizes unnecessary use of code, makes code less prone to error, and makes code easier to correct when errors have been made.  One way templates can help programmers avoid repetition is through template inheritance.  For example, a website that has the same header at the top of each page could put the HTML for the header in one file and have the other pages inherit from it.  This would avoid the repetition of writing the HTML for the header on every page and correcting it on every page if there was a need for a change.  Another way templates can help programmers avoid repetition is through variable substitution.  When typing HTML directly into python, it would require complicated string substitution to manipulate different values.  However, if that same HTML is put into a template, variable substitution can be used with statements written into the HTML template that allow the programmer to manipulate different variables.  Using templates therefore, makes adding functionality to HTML much more clear and effective.
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p><span class="code">Created by: Joel Pratt</span></p>
+    </footer>
+    {% for greeting in greetings %}
+      {% if greeting.author %}
+        <b>{{ greeting.author }}</b> wrote:
+      {% else %}
+        An anonymous person wrote:
+      {% endif %}
+      <blockquote>{{ greeting.content }}</blockquote>
+    {% endfor %}
+
+    <form action="/templates?guestbook_name={{ guestbook_name }}" method="post">
+      <div><textarea name="content" rows="3" cols="60"></textarea></div>
+      <div><input type="submit" value="Comment"></div>
+      {% if error %}
+        <div style="color: red">{{error}}</div>
+      {% endif %}
+    </form>
+    <a href="{{ url }}">{{ url_linktext }}</a>      
+</body>
+
+{% endblock %}
