@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<body>
+    <h1>Servers 101</h1>
+    <div class="lesson">
+      <h2 id="lesson-1">Servers</h2>
+      <div class="concept" id="lesson-1-1">
+        <div class="concept-title">Servers Overview</div>
+        <div class="concept-description">
+          <p>Servers store documents that make up the internet.  An HTML document on a server is accessed through its URL (uniform resource locator).  When someone enters a URL into a web browser, the browser sends a message to a server requesting the document.  When the server receives the request from the browser, it returns the corresponding document to the browser.  
+          </p>
+        </div>
+      </div>
+      <div class="concept" id="lesson-1-2">
+        <div class="concept-title">
+          Requests
+        </div>
+        <div class="concept-description">
+          <p>
+            To communicate with a server, a web browser uses HTTP (hypertext transfer protocol) which is the largest text protocol on the web.  The request from a browser begins with a request line that consists of a method, path and version.  The method describes the type of request being made to the server.  The path defines the document being retrieved.  The version is the type of HTTP being used (1.1 or 1.0).
+          </p>
+          <p>
+            The two primary methods used to make requests to a server are GET and POST.  GET requests are used to retrieve documents from servers.  Since GET requests are only to retrieve, documents they should not change the server.  POST requests, however, are used for updating documents on servers.  Since POST requests are used to update documents on servers, they do change the server.  This website is an example of how GET and POST requests operate.  To display the home page, a  GET request is used to retrieve the document that contains the HTML for the homepage.  When a comment is added to any of the pages, a POST request is used to add that comment to the database of comments for that page.  Now when that page is loaded in the future, the new comment will appear.
+          </p>
+       </div>
+      </div>
+      <div class="concept" id="lesson-1-3">
+        <div class="concept-title">
+        Responses
+        </div>
+        <div class="concept-description">
+          <p>
+            After receiving a request, the server sends a response back to the browser.  The response contains a status line that is made up of the version, status code, and reason phrase.  The version is the type of HTTP like in the request line.  The status code and reason phrase represent things like whether a document is found (200 ok), the document may be in a different location (302 found), there is an error on the browser side (404 not found), or there is an error on the server side (500 server error).
+          </p>
+          <p>
+            The purpose of servers is to respond to HTTP requests.  There are two main types of responses that servers will make: static and dynamic.  Static responses return prewritten files like an image.  Dynamic responses are built on the fly by web applications so they can return information that is regularly changing.
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p><span class="code">Created by: Joel Pratt</span></p>
+    </footer>
+    {% for greeting in greetings %}
+      {% if greeting.author %}
+        <b>{{ greeting.author }}</b> wrote:
+      {% else %}
+        An anonymous person wrote:
+      {% endif %}
+      <blockquote>{{ greeting.content }}</blockquote>
+    {% endfor %}
+
+    <form action="/servers?guestbook_name={{ guestbook_name }}" method="post">
+      <div><textarea name="content" rows="3" cols="60"></textarea></div>
+      <div><input type="submit" value="Comment"></div>
+      {% if error %}
+        <div style="color: red">{{error}}</div>
+      {% endif %}
+    </form>
+    <a href="{{ url }}">{{ url_linktext }}</a>      
+</body>
+
+{% endblock %}
