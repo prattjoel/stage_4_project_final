@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<body>
+    <h1>The Importance of Valdating User Input</h1>
+    <div class="lesson">
+      <h2 id="lesson-1">Servers</h2>
+      <div class="concept" id="lesson-1-1">
+        <div class="concept-title">Helping Users</div>
+        <div class="concept-description">
+          <p>It’s important to validate input so that friendly users have a good experience on your web page and malicious users cannot harm your web page.  When a user enters data into a form, he/she could make a mistake and input incorrect data.  Having input validation that identifies when a user enters incorrect data keeps the form from being submitted with incorrect information.  Giving a clear prompt once invalid information has been detected allows the user to make the appropriate corrections so that they can submit the form correctly.
+          </p>
+        </div>
+      </div>
+      <div class="concept" id="lesson-1-2">
+        <div class="concept-title">Dropdowns Aren't Enough</div>
+        <div class="concept-description">
+          <p>
+            Even when restricting the type of data entered by using dropdowns, it remains important to use input validation because a malicious user could still create a form that posts to our url and send destructive content to our server.  In this case, rather than allowing the malicious user to send any kind of information to our server, input validation makes sure the server does not receive the potentially destructive data.
+          </p>
+        </div>
+      </div>
+      <div class="concept" id="lesson-1-3">
+        <div class="concept-title">HTML Escaping</div>
+        <div class="concept-description">
+          <p>
+            HTML escaping is also another example of why input validation is important.  HTML escaping is used to make sure that HTML characters (like: &quot;, &lt;, and &gt;) appear as they are when entered into a form instead of being incorporated as HTML in the code for the web page.  Since anyone could change a web page using html if html escaping is not used, harm could be done to the page accidentally or intentionally.  Friendly users could could be unable to fill out a form properly if they change a page by accidently entering an HTML character when filling out a form.  On the other hand, malicious users could intentionally change a web page to something destructive if HTML escaping is not used.  Therefore, HTML escaping should always be used to make sure that a web page functions appropriately for friendly users and is protected from malicious users.
+
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p><span class="code">Created by: Joel Pratt</span></p>
+    </footer>
+    {% for greeting in greetings %}
+      {% if greeting.author %}
+        <b>{{ greeting.author }}</b> wrote:
+      {% else %}
+        An anonymous person wrote:
+      {% endif %}
+      <blockquote>{{ greeting.content }}</blockquote>
+    {% endfor %}
+
+    <form action="/validation?guestbook_name={{ guestbook_name }}" method="post">
+      <div><textarea name="content" rows="3" cols="60"></textarea></div>
+      <div><input type="submit" value="Comment"></div>
+      {% if error %}
+        <div style="color: red">{{error}}</div>
+      {% endif %}
+    </form>
+    <a href="{{ url }}">{{ url_linktext }}</a>      
+</body>
+
+{% endblock %}
