@@ -72,7 +72,6 @@ class LessonHandler(Handler):
         }
 
         self.render(template_file, template_values)
-        self.render('the_web.html', template_values)
 
 
     def post(self, guestbook):
