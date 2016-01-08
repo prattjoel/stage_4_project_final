@@ -1,0 +1,150 @@
+
+.menu ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background: #294860;
+	background: linear-gradient(top, #294860 0%, #bbbbbb 100%);  
+	background: -moz-linear-gradient(top, #294860 0%, #bbbbbb 100%); 
+	background: -webkit-linear-gradient(top, #294860 0%,#bbbbbb 100%);
+	border-radius: 10px; 
+	text-align: center;
+	
+}
+
+.menu li {
+	height: auto;
+	width: 150px;  
+	float: left; 
+	text-align: center;  
+	list-style: none;  
+	padding: 0;
+	margin: 0;
+	
+}
+
+.menu li a {
+	display: inline-block;
+	text-align: center;
+	color: white;
+	vertical-align: middle;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+.menu li:hover {
+	background-color: #333;
+	border-radius: 10px; 
+}
+
+
+
+.menu li:hover ul {
+	display: block;
+}
+
+.menu li ul {
+	display: none;  
+	height: auto;
+	position: absolute;
+	width: inherit;									
+	margin: 0; 
+	padding: 0; 		
+}	
+
+
+.menu li ul li {
+	background-color: #54879d;
+	display: block;
+}
+
+.menu li li a {
+	font-size: 1rem;
+}
+
+.menu li ul li:hover {
+	background-color: #294860;
+}
+
+
+body {
+	padding: 20px 10px;
+	font-family: Helvitica;
+	max-width: 2000px;
+	margin: 0 auto;
+	font-size: 1.4em;
+}
+
+h1 {
+	text-align: center;
+	color: #294860;
+}
+
+p {
+	margin: 10px 0;
+}
+
+ul {
+	list-style-type: none;
+}
+
+li {
+	font-size: 20px;
+	line-height: 44px;
+}
+
+.lesson {
+	background-color: #294860;
+	border-radius: 20px;
+	color: #fff;
+	padding: 10px;
+	margin: 10px auto;
+}
+
+h2 {
+	margin: 10px;
+	color: #294860;
+}
+
+.concept {
+	background-color: #dfeaf1;
+	padding: 4px;
+	margin: 10px;
+	border-radius: 4px;
+	color: black;
+}
+
+.concept-title {
+	font-size: 28px;
+	margin: 8px;
+	text-align: center;
+	color: #294860;
+}
+
+.concept-description {
+	font-weight: lighter;
+	margin: 6px;
+}
+
+.code {
+	font-family: Courier;
+	color: black;
+	font-weight: bold;
+	padding: 0 4px 0 4px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
