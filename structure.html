@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+<body>
+    <h1>Creating a Structured Document with HTML</h1>
+    <div class="lesson">
+      <h2 id="lesson-2">Lesson 2: Creating a Structured Document with HTML</h2>
+      <div class="concept" id="lesson-2-1">
+        <div class="concept-title">HTML = Structure</div>
+        <div class="concept-description">
+          <p>HTML is the language that provides the structure of a web page similar to the way a blueprint provides the structure of a house.  HTML organizes content in a tree like structure called a DOM, which stands for Document Object Model.  Essenntially, a DOM allows relevant information on a page to be grouped together in a similar way as a family tree groups relatives together by their family line.  For example, if a 'head' elelment contains a 'div' element, the 'head' would be the parent element and the 'div' would be the child element.   If the 'div' element contained two 'paragraoh' elements then the 'div' element would be the parent of the 'paragraph' elements and still remain the child element of the 'head' element.  The 'paragraph' elements would be siblings to each other under the 'div' element. Together, the 'head', 'div' and 'paragraph' elements would be a collection of elements similar to a family tree in which everyone is related but in different ways.  In the DOM structure, every element belongs to a family that becomes part of a larger tree-like structure that organizes the entire document structure.  The DOM structure of a website can be seen by opening developer tools in a web browser  
+          </p>
+       </div>
+     </div>
+      <div class="concept" id="lesson-2-2">
+        <div class="concept-title">
+       CSS = Style
+       </div>
+       <div class="conept-description">
+          <p> If HTML is the structural blueprint of a web page, CSS is the language that provides the design of the web page.  It determines how things will appear when displayed within the existing HTML structure.  For example, CSS can be used to change things like font and borders.
+          </p>
+       </div>
+     </div>
+     <div class="concept" id="lesson-2-3">
+        <div class="concept-title">
+        Think Inside the Box</div>
+        <div class="conept-description">
+          <p> Everything on a web page is a box.  Though not evertything will appear as a box, everything is contained in boxes.  When designing a web page, it is important to view each section as a box or collection of boxes.  Once a web page is broken down into its boxes, we can dive deeper into what each box will contain.
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p><span class="code">Created by: Joel Pratt</span></p>
+    </footer>
+    {% for greeting in greetings %}
+      {% if greeting.author %}
+        <b>{{ greeting.author }}</b> wrote:
+      {% else %}
+        An anonymous person wrote:
+      {% endif %}
+      <blockquote>{{ greeting.content }}</blockquote>
+    {% endfor %}
+
+    <form action="/structure?guestbook_name={{ guestbook_name }}" method="post">
+      <div><textarea name="content" rows="3" cols="60"></textarea></div>
+      <div><input type="submit" value="Comment"></div>
+      {% if error %}
+        <div style="color: red">{{error}}</div>
+      {% endif %}
+    </form>
+    <a href="{{ url }}">{{ url_linktext }}</a>  
+</body>
+
+{% endblock %}
