@@ -43,8 +43,6 @@ def _GuestbookKey(guestbook_name=None):
     return db.Key.from_path('Guestbook', guestbook_name)
 
 
-
-
 class LessonHandler(Handler):
 
     def page(self, template_file, guestbook):
@@ -73,7 +71,6 @@ class LessonHandler(Handler):
 
         self.render(template_file, template_values)
 
-
     def comment(self, guestbook, redirection):
         """Generates Comments"""
         guestbook_name = self.request.get('guestbook_name', guestbook)
@@ -92,24 +89,21 @@ class LessonHandler(Handler):
         self.redirect(redirection + urllib.urlencode(query_params))
 
 
-
-
 class MainPage(LessonHandler):
-    
+
     def get(self):
         guestbook_one = 'lesson_one_guestbook'
         page_one = 'the_web.html'
         # self.render('the_web.html', template_values)
         self.page(page_one, guestbook_one)
 
-
     def post(self):
         guestbook_one = 'lesson_one_guestbook'
         lesson_one_link = '/?'
         self.comment(guestbook_one, lesson_one_link)
 
-
 guestbook_two = 'lesson_two_guestbook'
+
 
 class LessonTwo(LessonHandler):
     def get(self):
@@ -121,7 +115,8 @@ class LessonTwo(LessonHandler):
         """Handle POST requests."""
         lesson_two_link = '/structure?'
         self.comment(guestbook_two, lesson_two_link)
-  
+
+
 guestbook_three = 'lesson_three_guestbook'
 
 
@@ -149,7 +144,8 @@ class ServersContent(LessonHandler):
         """Handle POST requests."""
         lesson_four_link = '/servers?'
         self.comment(guestbook_four, lesson_four_link)
-       
+
+
 guestbook_five = 'validating_input'
 
 
@@ -158,12 +154,12 @@ class ValidInput(LessonHandler):
         """Handle GET requests."""
         page_five = "valid_input.html"
         self.page(page_five, guestbook_five)
-   
+
     def post(self):
         """Handle POST requests."""
         lesson_five_link = '/validation?'
         self.comment(guestbook_five, lesson_five_link)
-       
+
 
 guestbook_six = 'templates'
 
@@ -173,13 +169,11 @@ class UsingTemplates(LessonHandler):
         """Handle GET requests."""
         page_six = "using_templates.html"
         self.page(page_six, guestbook_six)
-       
 
     def post(self):
         """Handle POST requests."""
         lesson_six_link = '/templates?'
         self.comment(guestbook_six, lesson_six_link)
-  
 
 
 app = webapp2.WSGIApplication([
