@@ -46,7 +46,7 @@ def _GuestbookKey(guestbook_name=None):
 class LessonHandler(Handler):
 
     def page(self, template_file, guestbook):
-        """Generates page"""
+        """Generates web pages from templates"""
         guestbook_name = self.request.get('guestbook_name', guestbook)
         greetings_query = Greeting.all().ancestor(
             _GuestbookKey(guestbook_name)).order('-date')
@@ -72,7 +72,7 @@ class LessonHandler(Handler):
         self.render(template_file, template_values)
 
     def comment(self, guestbook, redirection):
-        """Generates Comments"""
+        """Adds Comments to Datastore"""
         guestbook_name = self.request.get('guestbook_name', guestbook)
         greeting = Greeting(parent=_GuestbookKey(guestbook_name))
 
@@ -92,12 +92,14 @@ class LessonHandler(Handler):
 class MainPage(LessonHandler):
 
     def get(self):
+        """Handle GET requests."""
         guestbook_one = 'lesson_one_guestbook'
         page_one = 'the_web.html'
         # self.render('the_web.html', template_values)
         self.page(page_one, guestbook_one)
 
     def post(self):
+        """Handle POST requests."""
         guestbook_one = 'lesson_one_guestbook'
         lesson_one_link = '/?'
         self.comment(guestbook_one, lesson_one_link)
