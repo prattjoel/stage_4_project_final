@@ -95,7 +95,6 @@ class MainPage(LessonHandler):
         """Handle GET requests."""
         guestbook_one = 'lesson_one_guestbook'
         page_one = 'the_web.html'
-        # self.render('the_web.html', template_values)
         self.page(page_one, guestbook_one)
 
     def post(self):
