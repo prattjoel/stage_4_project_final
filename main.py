@@ -177,11 +177,27 @@ class UsingTemplates(LessonHandler):
         self.comment(guestbook_six, lesson_six_link)
 
 
+guestbook_seven = 'ios'
+
+
+class IosDevelopment(LessonHandler):
+    def get(self):
+        """Handle GET requests."""
+        page_seven = "ios_development.html"
+        self.page(page_seven, guestbook_seven)
+
+    def post(self):
+        """Handle POST requests."""
+        lesson_seven_link = '/ios?'
+        self.comment(guestbook_seven, lesson_seven_link)
+
+
 app = webapp2.WSGIApplication([
     ("/", MainPage),
     ("/structure", LessonTwo),
     ("/styling", LessonThree),
     ("/servers", ServersContent),
     ("/validation", ValidInput),
-    ("/templates", UsingTemplates)
+    ("/templates", UsingTemplates),
+    ("/ios", IosDevelopment)
     ])
