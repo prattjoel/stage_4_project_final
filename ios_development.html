@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<body>
+    <h1>IOS Development</h1>
+    <div class="lesson">
+      <div class="concept" id="lesson-1-1">
+        <div class="concept-title">IOS Overview</div>
+        <div class="concept-description">
+          <p>
+            IOS is the operating system used for Apple’s mobile devices.  It was originally developed for the first iPhone and was called iPhone OS.  It became IOS in 2010.  After the introduction of the iPhone, IOS expanded to Apple’s other devices like the iPod touch and iPad.  IOS is used on approximately 23% of smartphones and 66% of tablets.  The primary programming languages used for IOS development are Swift and Objective C.  
+          </p>
+          <p> 
+            The information contained in this section was found at this <a href=https://en.wikipedia.org/wiki/IOS>Wikipedia Page</a> 
+          </p>
+        </div>
+      </div>
+      <div class="concept" id="lesson-1-2">
+        <div class="concept-title">Swift</div>
+        <div class="concept-description">
+          <p>
+            Swift is an open source programming language specifically designed for IOS.  It is similar to Objective-C but more efficient and user friendly.  It uses object oriented features like classes and protocols and can actually be used side by side with Objective-C to make changes to programs already written in Objective-C.  Swift also has interactive playgrounds that allow programmers to see the results of their code immediately so they can perfect it as they go.  Swift has many safety features that eliminate unsafe code.  For example being able to use constants and variables allows developers to clearly define their intent and avoid possible issues.  Since Swift is open source, it is continually being updated so it improves regularly.  
+          </p>
+          <p>
+            The information contained in this section was found at this 
+            <a href=https://developer.apple.com/swift/>Apple Developer Page</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p><span class="code">Created by: Joel Pratt</span></p>
+    </footer>
+    {% for greeting in greetings %}
+      {% if greeting.author %}
+        <b>{{ greeting.author }}</b> wrote:
+      {% else %}
+        An anonymous person wrote:
+      {% endif %}
+      <blockquote>{{ greeting.content }}</blockquote>
+    {% endfor %}
+
+    <form action="/ios?guestbook_name={{ guestbook_name }}" method="post">
+      <div><textarea name="content" rows="3" cols="60"></textarea></div>
+      <div><input type="submit" value="Comment"></div>
+      {% if error %}
+        <div style="color: red">{{error}}</div>
+      {% endif %}
+    </form>
+    <a href="{{ url }}">{{ url_linktext }}</a>      
+</body>
+
+{% endblock %}
